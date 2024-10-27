@@ -69,8 +69,7 @@ mat-error{
     border-radius: 20px;
   }
   
-  ::placeholder {
-  }
+
   
   .form button {
     align-self: flex-end;
