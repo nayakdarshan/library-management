@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonServiceService } from '../../../shared/services/common-service.service';
 import { IndexedDbService } from '../../../shared/services/indexed-db.service';
 import { LoaderOverlayService } from '../../../shared/services/loader-overlay.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,7 @@ export class LoginComponent {
     private commonService: CommonServiceService,
     private indexedDbService: IndexedDbService,
     private loader: LoaderOverlayService,
+    @Inject(PLATFORM_ID) private platformId: Object 
   ) {
     this.buildForm();
   }
@@ -40,14 +42,12 @@ export class LoginComponent {
     const user = await this.indexedDbService.getUserByUsername(username);
 
     if (user && user.password === password) {
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      let isAdmin = user.role === 'admin' ? true : false ;
-      console.log('isAdmin', isAdmin);
-      localStorage.setItem('isAdmin', JSON.stringify(isAdmin));
-      if (isAdmin){
-        this.router.navigate(['/admin']).then(() => this.loader.hideLoader());
-      }else{
-        this.router.navigate(['/user']).then(() => this.loader.hideLoader());
+      if (isPlatformBrowser(this.platformId)) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        const isAdmin = user.role === 'admin';
+        console.log('isAdmin', isAdmin);
+        localStorage.setItem('isAdmin', JSON.stringify(isAdmin));
+        this.router.navigate([isAdmin ? '/admin' : '/user']).then(() => this.loader.hideLoader());
       }
       this.commonService.displaySuccessSnackBar('Login successful');
     } else {
