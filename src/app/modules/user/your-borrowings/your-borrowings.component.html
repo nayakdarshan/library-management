@@ -1,38 +1,40 @@
 <div class="container my-4">
     <h2 class="mb-4">My Borrowed Books</h2>
     
-    <div class="row">
-        @if(books.length > 0) {
-            @for(book of books; track $index) {
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm d-flex flex-row">
-                        @if(book.imageSrc) {
-                            <div class="image-container">
-                                <img [src]="book.imageSrc" alt="Image" />
+    <div class="card-container">
+        <div class="row">
+            @if(books.length > 0) {
+                @for(book of books; track $index) {
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm d-flex flex-row">
+                            @if(book.imageSrc) {
+                                <div class="image-container">
+                                    <img [src]="book.imageSrc" alt="Image" />
+                                </div>
+                            }
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">{{ book.title }}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Author: {{ book.author }}</h6>
+                                <p class="card-text">Available Copies: {{ book.availableCopies }}</p>
+                                
+                                <button 
+                                    class="btn btn-outline-danger w-100 mt-auto" 
+                                    (click)="returnBorrowedBook(book)"
+                                    [disabled]="book.availableCopies === 0">
+                                    Return Book
+                                </button>
                             </div>
-                        }
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">{{ book.title }}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Author: {{ book.author }}</h6>
-                            <p class="card-text">Available Copies: {{ book.availableCopies }}</p>
-                            
-                            <button 
-                                class="btn btn-outline-danger w-100 mt-auto" 
-                                (click)="returnBorrowedBook(book)"
-                                [disabled]="book.availableCopies === 0">
-                                Return Book
-                            </button>
                         </div>
                     </div>
+                }
+            } @else {
+                <div class="col-12 text-center">
+                    <p class="text-muted">
+                        There are no borrowings. To borrow books, 
+                        <span (click)="navigateToBorrowBooks()" class="text-primary cursor-pointer">click here</span>.
+                    </p>
                 </div>
             }
-        } @else {
-            <div class="col-12 text-center">
-                <p class="text-muted">
-                    There are no borrowings. To borrow books, 
-                    <span (click)="navigateToBorrowBooks()" class="text-primary cursor-pointer">click here</span>.
-                </p>
-            </div>
-        }
+        </div>
     </div>
 </div>

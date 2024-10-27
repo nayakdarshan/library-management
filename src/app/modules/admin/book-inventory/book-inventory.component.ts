@@ -62,7 +62,7 @@ export class BookInventoryComponent implements OnInit {
 
   deleteBook(bookId: string): void {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: '300px',
+      width: '500px',
     });
 
     dialogRef.afterClosed().subscribe((confirmed) => {

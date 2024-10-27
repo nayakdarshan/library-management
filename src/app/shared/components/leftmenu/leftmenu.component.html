@@ -4,10 +4,8 @@
         <a
           mat-list-item
           (click)="routeTo(item.routerLink)"
-          [ngClass]="{
-            'active-nav-item': isActive(item.routerLink),
-            'inactive-nav-item': !isActive(item.routerLink)
-          }"
+          [class.inactive-nav-item]="!isActive(item.routerLink)"
+          [class.active-nav-item]="isActive(item.routerLink)"
         >
           <div class="sidenav-list-item-wrapper">
             <div class="sidenav-list-text">{{ item.title }}</div>

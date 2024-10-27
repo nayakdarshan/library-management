@@ -52,7 +52,7 @@ export class BorrowBooksComponent implements OnInit {
   borrowBook(book: any): void {
     if (book.availableCopies > 0) {
       const dialogRef = this.dialog.open(ConfirmationPopupComponent, {
-        width: '300px',
+        width: '500px',
         data: { 
           message: `Are you sure you want to borrow "${book.title}"?`,
           type: 'borrow' 

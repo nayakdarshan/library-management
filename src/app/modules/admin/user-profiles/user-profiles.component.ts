@@ -23,10 +23,9 @@ export class UserProfilesComponent {
       this.users = users;
     });
   }
-
   openAddDialog(): void {
     const dialogRef = this.dialog.open(UserEditDialogComponent, {
-      width: '400px',
+      width: '800px',
       data: { isEdit: false },
     });
 
@@ -39,7 +38,7 @@ export class UserProfilesComponent {
 
   openEditDialog(user: any): void {
     const dialogRef = this.dialog.open(UserEditDialogComponent, {
-      width: '400px',
+      width: '800px',
       data: { isEdit: true, user },
     });
 
@@ -52,7 +51,7 @@ export class UserProfilesComponent {
 
   deleteUser(userId: string): void {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: '300px',
+      width: '500px',
     });
 
     dialogRef.afterClosed().subscribe((confirmed) => {

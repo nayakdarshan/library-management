@@ -1,63 +1,72 @@
+.card-scroll-container {
+  max-height: 75vh;
+  overflow-y: auto;
+  padding-right: 15px;
+}
+
 .image-container {
-    flex-shrink: 0;
-    width: 150px;
-  }
-  
-  .image-container img {
-    border-radius: 6px;
-    padding: 10px;
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .card {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-  }
-  
-  .card-body {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    justify-content: space-between;
-    padding: 15px;
-  }
-  
-  .mt-auto {
-    margin-top: auto;
-  }
-  
-  .btn {
-    width: 48%;
-  }
-  .avatar{
-    border-radius: 6px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    width: 150px;
-    height: 100%;
-    object-fit: cover;
-    background-color: #262626;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    margin-right: 20px;
-    font-size: 48px;
-    color:#ffffff;
-    
+  flex-shrink: 0;
+  width: 150px;
 }
-.avatar-badge{
-    font-size: 16px;
-    padding: 5px 15px;
-    border-radius: 6px;
-    text-align: center;
-    color:#ffffff;
+
+.image-container img {
+  border-radius: 6px;
+  padding: 10px;
+  max-width: 100%;
+  height: auto;
 }
-.red{
-    background-color: red;
+
+.card {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
 }
-.green{
-    background-color: green;
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+.btn {
+  width: 48%;
+}
+
+.avatar {
+  border-radius: 6px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  width: 150px;
+  height: 100%;
+  object-fit: cover;
+  background-color: #262626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-right: 20px;
+  font-size: 48px;
+  color: #ffffff;
+}
+
+.avatar-badge {
+  font-size: 16px;
+  padding: 5px 15px;
+  border-radius: 6px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
 }

@@ -38,9 +38,14 @@ export class TransactionsComponent {
   async loadTransactions() {
     const transactions = await this.transactionService.getAllTransactions();
     const transactionDetails = await this.transactionService.getTransactionDetailsWithNames(transactions);
+
+    transactionDetails.sort((a, b) => new Date(b.dateBorrowed).getTime() - new Date(a.dateBorrowed).getTime());
+
     this.dataSource.data = transactionDetails;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
+    this.sort.sort({ id: 'dateBorrowed', start: 'desc', disableClear: true });
   }
 
   applyFilter(event: Event) {

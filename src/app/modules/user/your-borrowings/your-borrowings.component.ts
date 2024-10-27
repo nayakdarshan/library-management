@@ -47,7 +47,7 @@ export class YourBorrowingsComponent implements OnInit {
 
   returnBorrowedBook(book: any): void {
     const dialogRef = this.dialog.open(ConfirmationPopupComponent, {
-      width: '300px',
+      width: '500px',
       data: { message: `Are you sure you want to return "${book.title}"?` }
     });
 
