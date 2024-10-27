@@ -9,10 +9,13 @@ const routes: Routes = [
   {path:'book-inventory', component:BookInventoryComponent},
   {path:'user-profiles', component:UserProfilesComponent},
   {path:'transactions', component:TransactionsComponent},
-];
+  { path: '**', redirectTo: '' } 
+] || [];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {
+    static routes: Routes | undefined;
+}

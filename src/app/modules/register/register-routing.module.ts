@@ -4,11 +4,14 @@ import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {path:'', component:RegisterComponent},
+  { path: '**', redirectTo: '' } 
 
-];
+] || [];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class RegisterRoutingModule { }
+export class RegisterRoutingModule {
+    static routes: Routes | undefined;
+}

@@ -64,7 +64,7 @@ export class BookService {
 
       const transactions = await this.indexedDbService.getTransactionsByUserId(userId);
       const hasBorrowed = transactions.some(
-        (transaction) => transaction.bookId === bookId && !transaction.dateReturned
+        (transaction:any) => transaction.bookId === bookId && !transaction.dateReturned
       );
 
       if (hasBorrowed) {
@@ -130,18 +130,16 @@ export class BookService {
     }
   }
 
+
   async getAvailableBooksForUser(userId: string): Promise<any[]> {
     try {
-      const allBooks = await this.indexedDbService.getAllBooks();
-      const allTransactions = await this.indexedDbService.getTransactionsByUserId(userId);
-      const borrowedBookIds = new Set(allTransactions.map((transaction) => transaction.bookId));
-
-      return allBooks.filter((book) => !borrowedBookIds.has(book.id));
+      return await this.indexedDbService.getAvailableBooksForUser(userId);
     } catch (error) {
       this.commonService.displayFailureSnackBar('Error fetching available books for user: ' + error);
       throw error;
     }
   }
+  
 
   async getBorrowedBooksByUser(userId: string): Promise<any[]> {
     try {

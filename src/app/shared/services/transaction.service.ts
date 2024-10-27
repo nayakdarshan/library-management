@@ -23,16 +23,32 @@ export class TransactionService {
   }
 
   async getTransactionsByUserId(userId: string): Promise<any[]> {
-    const transactions = await this.indexedDbService.getAllTransactions();
-    return transactions.filter((transaction: any) => transaction.userId === userId);
+    return this.indexedDbService.getTransactionsByUserId(userId);
   }
 
   async getTransactionsByBookId(bookId: string): Promise<{ borrowedBy: any[]; returnedBy: any[] }> {
     const transactions = await this.indexedDbService.getAllTransactions();
-    const borrowedBy = transactions.filter((transaction: any) => transaction.bookId === bookId && !transaction.dateReturned);
-    const returnedBy = transactions.filter((transaction: any) => transaction.bookId === bookId && transaction.dateReturned);
+    const userPromises = transactions.map(transaction => this.indexedDbService.getUserNameById(transaction.userId));
+    const bookPromise = this.indexedDbService.getBookNameById(bookId);
+    const userNames = await Promise.all(userPromises);
+    const bookName = await bookPromise;
+    const borrowedBy = transactions.filter(transaction => transaction.bookId === bookId && !transaction.dateReturned)
+      .map((transaction, index) => ({
+        ...transaction,
+        userName: userNames[index], 
+        bookName: bookName
+      }));
+  
+    const returnedBy = transactions.filter(transaction => transaction.bookId === bookId && transaction.dateReturned)
+      .map((transaction, index) => ({
+        ...transaction,
+        userName: userNames[index + borrowedBy.length],
+        bookName: bookName 
+      }));
+  
     return { borrowedBy, returnedBy };
   }
+  
   async getTransactionDetailsWithNames(transactions: any[]): Promise<any[]> {
     const transactionDetails = await Promise.all(transactions.map(async (transaction) => {
       const userName = await this.indexedDbService.getUserNameById(transaction.userId);
@@ -46,5 +62,11 @@ export class TransactionService {
     }));
 
     return transactionDetails;
+  }
+  async getUserNameById(userId:any){
+    return this.indexedDbService.getUserNameById(userId);
+  }
+  async getBookNameById(userId:any){
+    return this.indexedDbService.getBookNameById(userId);
   }
 }

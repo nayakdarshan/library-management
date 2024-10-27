@@ -136,7 +136,16 @@ export class IndexedDbService {
     const db = await this.dbPromise;
     return db.get('books', bookId);
   }
-
+  async getAvailableBooksForUser(userId: string): Promise<Book[]> {
+    if (!this.dbPromise) return [];
+    const db = await this.dbPromise;
+    const activeTransactions = await this.getActiveTransactionsByUserId(userId);
+    const borrowedBookIds = activeTransactions.map(transaction => transaction.bookId);
+    const allBooks = await db.getAll('books');
+    const availableBooks = allBooks.filter(book => !borrowedBookIds.includes(book.id));
+    return availableBooks;
+  }
+  
   // Transaction operations
   async addTransaction(transaction: Transaction): Promise<void> {
     if (!this.dbPromise) throw new Error('IndexedDB not supported in this environment.');
@@ -236,6 +245,7 @@ export class IndexedDbService {
 
   async getUserNameById(userId: string): Promise<string | undefined> {
     const user = await this.getUserById(userId);
+    console.log(user)
     return user ? user.username : undefined;
   }
 
@@ -243,4 +253,5 @@ export class IndexedDbService {
     const book = await this.getBookById(bookId);
     return book ? book.title : undefined;
   }
+  
 }

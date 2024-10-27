@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h2 class="modal-title w-100 text-center">Confirm Borrowing</h2>
+    <h2 class="modal-title w-100 text-center">Confirm {{data.type === 'borrow' ? 'Borrow' : 'Return'}}</h2>
     <button type="button" class="close" (click)="onCancel()" aria-label="Close">
       <span>&times;</span>
     </button>
@@ -11,6 +11,6 @@
   
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
-    <button type="button" class="btn btn-primary" (click)="onConfirm()">Borrow</button>
+    <button type="button" class="btn btn-primary" (click)="onConfirm()">{{data.type === 'borrow' ? 'Borrow' : 'Return'}}</button>
   </div>
   

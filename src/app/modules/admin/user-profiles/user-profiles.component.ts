@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../../../shared/services/user.service';
 import { ConfirmationDialogComponent } from '../../../shared/components/confirmation-dialog/confirmation-dialog.component';
 import { UserEditDialogComponent } from '../../../shared/components/user-edit-dialog/user-edit-dialog.component';
+import { BorrowingsModalComponent } from '../../../shared/components/borrowings-modal/borrowings-modal.component';
 
 @Component({
   selector: 'app-user-profiles',
@@ -64,4 +65,20 @@ export class UserProfilesComponent {
   trackById(index: number, user: any): string {
     return user.id;
   }
+  openBorrowingsModal(userId: string): void {
+    const dialogRef = this.dialog.open(BorrowingsModalComponent, {
+      width: '800px',
+      data:{
+        bookId:null,
+        userId:userId,
+      },
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Borrowings modal result:', result);
+      }
+    });
+  }
+  
 }

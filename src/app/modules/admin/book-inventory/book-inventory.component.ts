@@ -4,6 +4,7 @@ import { BookService } from '../../../shared/services/book.service';
 import { MatTableModule } from '@angular/material/table';
 import { AddEditBookDialogComponent } from '../../../shared/components/add-edit-book-dialog/add-edit-book-dialog.component';
 import { ConfirmationDialogComponent } from '../../../shared/components/confirmation-dialog/confirmation-dialog.component';
+import { BorrowingsModalComponent } from '../../../shared/components/borrowings-modal/borrowings-modal.component';
 
 interface Book {
   id: string;
@@ -67,6 +68,21 @@ export class BookInventoryComponent implements OnInit {
     dialogRef.afterClosed().subscribe((confirmed) => {
       if (confirmed) {
         this.bookService.deleteBook(bookId);
+      }
+    });
+  }
+  openBorrowingsModal(bookId: string): void {
+    const dialogRef = this.dialog.open(BorrowingsModalComponent, {
+      width: '800px',
+      data:{
+        bookId:bookId,
+        userId:null
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((confirmed) => {
+      if (confirmed) {
+        console.log('Borrowings modal result:', confirmed);
       }
     });
   }

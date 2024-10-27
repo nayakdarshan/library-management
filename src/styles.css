@@ -3,7 +3,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+:root {
+  --mdc-dialog-container-shape:10px;
+  
+}
 /* Custom input and button styles */
 .input {
   @apply p-2 border rounded w-full;

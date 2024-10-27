@@ -17,9 +17,12 @@
               <h5 class="card-title">{{ book.title }}</h5>
               <h6 class="card-subtitle mb-2 text-muted">Author: {{ book.author }}</h6>
               <p class="card-text">Available Copies: {{ book.availableCopies }}</p>
-              <div class="mt-auto d-flex justify-content-between">
-                <button class="btn btn-outline-primary" (click)="openEditDialog(book)">Edit</button>
-                <button class="btn btn-outline-danger" (click)="deleteBook(book.id)">Delete</button>
+              <div>
+                <div class="mt-auto d-flex justify-content-between">
+                  <button class="btn btn-outline-primary" (click)="openEditDialog(book)">Edit</button>
+                  <button class="btn btn-outline-danger" (click)="deleteBook(book.id)">Delete</button>
+                </div>
+                <button class="btn btn-outline-secondary w-100 mt-3" (click)="openBorrowingsModal(book.id)">View Borrowings</button>
               </div>
             </div>
           </div>
