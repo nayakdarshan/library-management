@@ -1,0 +1,74 @@
+<div style="position:relative;z-index:100;">
+  <mat-sidenav-container>
+  
+      <mat-toolbar class="custom-toolbar">
+        <div class="toolbar-wrapper">
+          <div class="toolbar-icon-container sidenav" (click)="sideNav.open('mouse')">
+            <img src="assets/icons/Icon feather-menu.svg" alt="icon" class="img">
+          </div>
+          <div class="toolbar-container  p-2">
+            @if(isAdmin){
+              <div>Admin Panel - Library Management System</div>
+            }@else {
+              <div>Library Management System</div>
+            }
+          </div>
+          <div class="toolbar-icon-container notSidenav">
+            <div class="avatar" [matMenuTriggerFor]="userMenu">{{ currentUser?.username?.charAt(0).toUpperCase()}}</div>
+            <mat-menu #userMenu="matMenu">
+              <button mat-menu-item (click)="logOut()">Logout</button>
+            </mat-menu>
+          </div>
+        </div>
+      </mat-toolbar>
+      <mat-sidenav #sideNav class="sidenav">
+        <div class="sidenav-info-wrapper">
+          <div class="sidenav-info-container">
+            <div class="sidenav-row">
+              <div class="sidenav-col">
+                <div class="avatar">{{ currentUser?.username?.charAt(0).toUpperCase()}}</div>
+              </div>
+              <div class="sidenav-col">
+                <div class="profile-name">{{currentUser?.username}}</div>
+                <div class="profile-role">{{currentUser?.email}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <mat-nav-list>
+          <ng-container *ngFor="let item of sideBarItems">
+              <a mat-list-item routerLink="{{item.routerLink}}" [ngClass]="{ 'active-nav-item': isActive(item.routerLink), 'inactive-nav-item': !isActive(item.routerLink) }">
+                <div class="sidenav-list-item-wrapper" (click)="sideNav.close()">
+                  <div class="sidenav-list-item-container">
+                    <div class="sidenav-list-text">{{item.title}}</div>
+                  </div>
+                  <div class="sidenav-active-item-icon-container active-icon">
+                    <img src="assets/icons/forward-arrow.svg" alt="icon" class="img">
+                  </div>
+                </div>
+              </a>
+          </ng-container>
+        </mat-nav-list>
+        
+        
+        
+        <div class="sidenav-button-wrapper">
+          <div class="sidenav-button-container" (click)="logOut()">
+            <div class="sidenav-button-img-container">
+              <img src="assets/icons/logout.svg" alt="leads" class="img">
+            </div>
+            <div>
+              <button class="sidenav-button" (click)="logOut()">Logout</button>
+            </div>
+          </div>
+        </div>
+    
+      </mat-sidenav>
+    </mat-sidenav-container>
+</div>
+
+<!-- <div>
+    <app-footer #footer></app-footer>
+</div> -->
+  

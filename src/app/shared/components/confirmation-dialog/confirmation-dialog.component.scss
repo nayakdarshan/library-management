@@ -1,0 +1,35 @@
+.modal-header {
+    padding: 1rem;
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .modal-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold; 
+  }
+  
+  .modal-body {
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .modal-footer {
+    padding: 1rem;
+    justify-content: space-between; 
+  }
+  
+  .btn {
+    padding: 0.5rem 1rem; 
+    border-radius: 0.25rem; 
+  }
+  
+  .btn:hover {
+    opacity: 0.8;
+  }
+  
+  .close {
+    color: white;
+  }
+  

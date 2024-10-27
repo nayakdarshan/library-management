@@ -1,0 +1,48 @@
+.sidenav {
+    background-color: #ffffff; 
+    height: 90vh; 
+    padding: 20px; 
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.mat-nav-list {
+    padding: 0; 
+}
+
+.sidenav-list-item-wrapper {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px 15px; 
+    border-radius: 5px; 
+    transition: background-color 0.3s ease; 
+    font-size: 16px; 
+    color: #000000; 
+}
+
+.active-nav-item {
+    background-color: var(--green); 
+    color: #ffffff; 
+}
+
+.inactive-nav-item {
+    color: #000000; 
+}
+
+.sidenav-list-item-wrapper:hover {
+    background-color: rgba(0, 0, 0, 0.1); 
+}
+
+.active-icon {
+    display: flex; 
+    align-items: center;
+}
+
+.img {
+    width: 16px; 
+    height: 16px; 
+    margin-left: 10px;
+    filter: invert(1);
+}

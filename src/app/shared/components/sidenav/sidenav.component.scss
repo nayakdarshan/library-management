@@ -1,0 +1,251 @@
+::ng-deep .mat-drawer{
+    z-index: 10 !important;
+    border-radius: 0 !important;
+}
+mat-sidenav{
+    background-color:#212264;
+    width: 100%;
+    position: fixed;
+    .sidenav-info-wrapper{
+        padding:18px;
+        .sidenav-logo-header{
+            display: flex;
+            align-items: unset;
+            justify-content: end;
+            .sidenav-logo-container{
+                width:32px;
+                height:42px;
+            }
+            .sidenav-close-section{
+                width:25px;
+                height:25px;
+                cursor: pointer;
+            }
+        }
+        .sidenav-info-container{
+            background-color: #D8D8D811;
+            padding:15px;
+            margin-top:20px;
+            
+            .sidenav-row{
+                display: flex;
+                align-items: center;
+                .sidenav-col{
+                    .sidenav-profile-img-container{
+                        height: 25px;
+                        width:25px;
+                        margin-right: 15px;
+                        position: relative;
+                        .profile-img{
+                            border-radius:50%;
+                        }
+                        .online-status{
+                            position: absolute;
+                            right:0;
+                            bottom:0;
+                            background-color:#00AF00;
+                            height: 8px;
+                            width:8px;
+                            border-radius: 50%;
+                        }
+                    }
+                    .profile-name,  
+                    .profile-role{
+                        color:#ffffff;
+                    }
+                    .profile-name{
+                        font-size: 13px;
+                    }   
+                    .profile-role{
+                        font-size: 10px;
+                    }
+                }
+            }
+        }
+    }
+    .sidenav-list-item-wrapper{
+        display: flex;
+        justify-content: space-between;
+    }
+    .sidenav-active-item-icon-container{
+        width:18px;
+        height:13px;
+    }
+    .sidenav-list-item-container{
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        .sidenav-list-img-container{
+            width:24px;
+            height:30px;
+        }
+        .sidenav-list-text{
+            color:#ffffff;
+            padding-left: 15px;
+            font-size: 13px;
+        }
+    }
+    .sidenav-button-wrapper{
+        padding:18px;
+        cursor: pointer;
+        .sidenav-button-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #161757;
+            border-radius:8px;
+            padding: 10px;
+            position: absolute;
+            width: 90%;
+            bottom: 20px;            
+            .sidenav-button{
+                    color:#ffffff;
+                    font-size: 13px;
+                    padding: 0 0 0 10px;
+                    outline: none;
+                    border: none;
+            }
+            }
+        }
+}
+.children-menu{
+    background-color: #1D1E58;
+}
+.active-nav-item {
+    .active-icon {
+      display: inline-block; 
+    }
+  }
+  .inactive-nav-item .active-icon {
+    display: none;
+  }
+
+::ng-deep .mat-drawer-backdrop.mat-drawer-shown {
+    height: 100vh;
+    position: fixed;
+}
+.sidenav-items-list{
+    mat-expansion-panel{
+        background-color: transparent;
+    }
+}
+.dropdown-icon-container {
+    width: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .rotate {
+    transform: rotate(180deg);
+  }
+  
+  .dropdown-icon {
+    width: 100%;
+    height: 100%;
+  }
+
+.footer{
+    background-color: #262626;
+    width:100%;
+    height:45px;
+    color:#A09D9D;
+    font-size:16px;
+    font-weight: 400;
+    position: fixed;
+    bottom:0;
+    z-index: 2;
+    text-align: center;
+    padding-top: 0.7%;
+
+}
+
+.custom-toolbar{
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1000;
+    padding:15px 30px !important;
+    height:8% !important;
+    background-color: #c7c7c77e !important;
+    box-shadow: 0 3px 17px #A0B3C61A !important;
+    overflow: hidden;
+    .toolbar-wrapper{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content:space-between;
+        // text-align: center;
+        // float: left;
+        width: 100%;
+        .toolbar-icon-container{
+            cursor: pointer;
+            width:30px;
+            height:auto;
+        }
+    }
+    .toolbar-container{
+        // width:100%;
+        padding:0 30px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .toolbar-logo-container{
+            width:110px;
+            height: 65px;
+        }
+        .toolbar-profile-contianer{
+            cursor: pointer;
+            // float: right;
+            width:50px;
+            height:50px;
+            .profile-img{
+                border-radius:50%;
+            }
+        }
+        .toolbar-icon-contianer{
+            cursor: pointer;
+            width: auto;
+            .img{
+                border-radius: 0%;
+            }
+        }
+        .right-icons{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+.avatar{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    background-color: #262626;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-right: 20px;
+    font-size: 28px;
+    color:#ffffff;
+}
+
+.sidenav{
+    display:none;
+} 
+.notSidenav{
+    display:block;
+}
+@media screen and (max-width: 600px) {
+    .sidenav{
+        display:block;
+    }
+    .notSidenav{
+        display:none;
+    }
+}

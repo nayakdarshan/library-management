@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="left-col">
+        <span>
+            <p class="data" *ngIf="data?.status === 'success'">{{data?.message}}</p>
+            <p class="data" style="color: #C41D18 !important;" *ngIf="data?.status === 'failure'">{{data?.message}}</p>
+        </span>
+    </div>
+</div>
+  

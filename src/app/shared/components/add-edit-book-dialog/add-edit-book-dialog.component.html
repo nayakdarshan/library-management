@@ -1,0 +1,76 @@
+<div class="modal-header">
+    <h2 class="modal-title w-100 text-center">{{ data.isEdit ? 'Edit Book' : 'Add Book' }}</h2>
+    <button type="button" class="close" (click)="onCancel()" aria-label="Close">
+      <span>&times;</span>
+    </button>
+  </div>
+  
+  <div class="modal-body">
+    <form [formGroup]="bookForm">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          formControlName="title"
+          required
+          placeholder="Enter book title"
+        />
+        @if(bookForm.get('title')?.invalid && (bookForm.get('title')?.touched || bookForm.get('title')?.dirty)){
+            <div class="text-danger">Title is required</div>
+        }
+      </div>
+  
+      <div class="form-group">
+        <label for="author">Author</label>
+        <input
+          type="text"
+          class="form-control"
+          id="author"
+          formControlName="author"
+          required
+          placeholder="Enter author name"
+        />
+        @if(bookForm.get('author')?.invalid && (bookForm.get('author')?.touched || bookForm.get('author')?.dirty)){
+            <div class="text-danger">Author is required</div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="imageSrc">Image URL</label>
+        <input
+          type="text"
+          class="form-control"
+          id="imageSrc"
+          formControlName="imageSrc"
+          required
+          placeholder="Enter Image URL"
+        />
+        @if(bookForm.get('imageSrc')?.invalid && (bookForm.get('imageSrc')?.touched || bookForm.get('imageSrc')?.dirty)){
+            <div class="text-danger">Image URL is required</div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="availableCopies">Available Copies</label>
+        <input
+          type="number"
+          class="form-control"
+          id="availableCopies"
+          formControlName="availableCopies"
+          required
+          placeholder="Enter available copies"
+        />
+        @if(bookForm.get('availableCopies')?.invalid && (bookForm.get('availableCopies')?.touched || bookForm.get('availableCopies')?.dirty)){
+            <div class="text-danger">Must be at least 1 available copy</div>
+        }
+      </div>
+    </form>
+  </div>
+  
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="onSave()" [disabled]="bookForm.invalid">Save</button>
+  </div>
+  

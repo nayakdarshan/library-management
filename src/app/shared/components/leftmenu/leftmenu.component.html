@@ -1,0 +1,22 @@
+<div class="sidenav">
+    <mat-nav-list>
+      <ng-container *ngFor="let item of sideBarItems">
+        <a
+          mat-list-item
+          (click)="routeTo(item.routerLink)"
+          [ngClass]="{
+            'active-nav-item': isActive(item.routerLink),
+            'inactive-nav-item': !isActive(item.routerLink)
+          }"
+        >
+          <div class="sidenav-list-item-wrapper">
+            <div class="sidenav-list-text">{{ item.title }}</div>
+            <div *ngIf="isActive(item.routerLink)" class="active-icon">
+              <img src="assets/icons/forward-arrow.svg" alt="icon" class="img" />
+            </div>
+          </div>
+        </a>
+      </ng-container>
+    </mat-nav-list>
+  </div>
+  
