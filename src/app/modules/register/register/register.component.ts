@@ -40,6 +40,8 @@ export class RegisterComponent {
 
   buildForm() {
     this.registerForm = this.fb.group({
+      name: ['', Validators.compose([Validators.required])],
+      phone: ['', Validators.compose([Validators.required])],
       username: ['', Validators.compose([Validators.required])], 
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.required])],
@@ -64,14 +66,14 @@ export class RegisterComponent {
       return;
     }
 
-    const { username, password, email, role } = formData.value;
+    const { name,phone,username, password, email, role } = formData.value;
     const userExists = await this.indexedDbService.getUserByUsername(username);
 
     if (userExists) {
       this.commonService.displayFailureSnackBar('Username already exists');
     } else {
       const userId = Date.now().toString();
-      await this.indexedDbService.addUser({ id: userId, username, password, role, email, borrowingLimit: 5 });
+      await this.indexedDbService.addUser({ id: userId, name, phone, username, password, role, email, borrowingLimit: 5 });
       this.commonService.displaySuccessSnackBar('Registration successful');
       this.router.navigate(['/login']);
     }

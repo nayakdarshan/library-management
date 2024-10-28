@@ -64,9 +64,19 @@
 }
 
 .red {
-  background-color: red;
+  background-color: #f18787;
 }
 
 .green {
-  background-color: green;
+  background-color: #66c79f;
+}
+
+.card-subtitle{
+  font-size: 14px;
+  span{
+    color:#000000;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 5px;
+  }
 }

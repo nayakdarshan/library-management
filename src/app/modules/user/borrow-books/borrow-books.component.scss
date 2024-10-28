@@ -39,3 +39,12 @@
   overflow-x: hidden;
 }
 
+.card-subtitle{
+  font-size: 14px;
+  span{
+    color:#000000;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 5px;
+  }
+}

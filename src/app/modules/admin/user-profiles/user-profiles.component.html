@@ -17,10 +17,13 @@
                                   </div>
                                   <div class="card-body d-flex flex-column">
                                       <h5 class="card-title">{{ user.name }}</h5>
-                                      <div class="avatar-badge absolute right-[20px]" [class.red]="user.role === 'admin'" [class.green]="user.role === 'user'">{{user.role}}</div>
+                                      <div class="avatar-badge absolute right-[20px]" [class.red]="user.role === 'admin'" [class.green]="user.role === 'user'">{{user.role.toUpperCase()}}</div>
+                                  <p class="card-subtitle mb-2 text-muted">Borrow Limit:<span>{{ user.borrowingLimit }}</span></p>
                                   <p class="card-subtitle mb-2 text-muted">Email:<span>{{ user.email }}</span></p>
                                   <p class="card-subtitle mb-2 text-muted">Phone:<span>{{ user.phone }}</span></p>
-                                  <p class="card-subtitle mb-2 text-muted">Address:<span>{{ user.address?.city}},{{ user.address?.state}}</span></p>
+                                  @if(user.address?.city || user.address?.state){
+                                    <p class="card-subtitle mb-2 text-muted">Address:<span>{{ user.address?.city}},{{ user.address?.state}}</span></p>
+                                  }
 
                                   <div>
                                       <div class="mt-auto d-flex justify-content-between">

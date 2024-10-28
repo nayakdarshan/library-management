@@ -4,6 +4,8 @@ import { openDB, DBSchema, IDBPDatabase } from 'idb';
 
 interface User {
   id: string;
+  name: string;
+  phone: string;
   username: string;
   email: string;
   password: string;

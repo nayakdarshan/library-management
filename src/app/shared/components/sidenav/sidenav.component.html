@@ -13,7 +13,7 @@
               <div>Library Management System</div>
             }
           </div>
-          <div class="toolbar-icon-container notSidenav">
+          <div class="toolbar-icon-container notSidenav me-4">
             <div class="avatar" [matMenuTriggerFor]="userMenu">{{ currentUser?.username?.charAt(0).toUpperCase()}}</div>
             <mat-menu #userMenu="matMenu">
               <button mat-menu-item (click)="logOut()">Logout</button>
